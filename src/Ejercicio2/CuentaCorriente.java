@@ -38,8 +38,8 @@ public class CuentaCorriente {
 
     void mostrarInformacion(){
         System.out.println("\n\n=====DATOS DE LA CUENTA CORRIENTE ====");
-        System.out.println("Titular de la Cuenta: "+nombreTitular);
-        System.out.println("DNI del titular: "+dni);
+        System.out.println("Titular de la Cuenta: "+this.nombreTitular);
+        System.out.println("DNI del titular: "+this.dni);
         System.out.println("Saldo Actual: "+this.saldo+"€");
     }
 }
