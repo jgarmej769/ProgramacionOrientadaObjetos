@@ -39,6 +39,7 @@ public class Agenda {
         }
         return existe;
     }
+
     boolean insertarContacto (Contacto nuevoContacto) {
         boolean anadido = false;
         boolean existente = false;
@@ -61,14 +62,13 @@ public class Agenda {
         int i =0;
         Contacto temporal = null;
         while (!encontrado && i<listaTemporal.length) {
-            if (listaTemporal[i].getNombre().equals(nombreContacto)) {
+            if (listaTemporal[i] != null && listaTemporal[i].getNombre().equals(nombreContacto)) {
                 listaTemporal[i] = null;
             }
             i++;
         }
         return listaTemporal;
     }
-
 
     void informacionContacto (Contacto contactoEntrada){
         System.out.println("===DATOS DEL CONTACTO===");
@@ -92,7 +92,7 @@ public class Agenda {
             int j = 0;
 
             while (!encontrado && j<listaTemporal.length){
-                if (listaTemporal[j].getNombre().equals(listaNombres[i])){
+                if (listaTemporal[j] != null && listaTemporal[j].getNombre().equals(listaNombres[i])){
                     contactoOrdenados[i] = listaTemporal[j];
                     listaTemporal = buscaryEliminarContactoListaTemporal(listaTemporal, listaNombres[i]);
                     encontrado = true;
@@ -106,7 +106,23 @@ public class Agenda {
             System.out.println("Contacto "+ (i+1)+ "-----------------------------");
             System.out.println("Nombre: "+contactoOrdenados[i].getNombre());
             System.out.println("Telefono: "+contactoOrdenados[i].getTelefono());
+            System.out.println();
+        }
+    }
+
+    void editarContacto (Contacto contactoEditar, String nuevoNombre, String nuevoTelefono){
+        int i = 0;
+        boolean encontrado = false;
+        while (!encontrado && i < this.listaContactos.length){
+            if (contactoEditar.getTelefono().equals(listaContactos[i].getTelefono())){
+                listaContactos[i].setNombre(nuevoNombre);
+                listaContactos[i].setTelefono(nuevoTelefono);
+                encontrado = true;
+            }
+            i++;
         }
 
+        System.out.println("\n***El contacto se ha modificado correctamente***");
+        informacionContacto(contactoEditar);
     }
 }

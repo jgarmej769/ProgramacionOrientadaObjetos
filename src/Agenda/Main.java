@@ -36,6 +36,22 @@ public class Main {
                     break;
 
                 case 3:
+                    System.out.println("Introduzca el telefono del contacto a editar: ");
+                    String telefonoEditar = sc.next();
+
+                    if (agenda.contactoExiste(telefonoEditar)){
+                        agenda.informacionContacto(agenda.buscarContactoTelefono(telefonoEditar));
+                    }
+
+                    System.out.println("\nIntroduzca el nuevo nombre: ");
+                    String nombreNuevo = sc.next();
+                    System.out.println("\nIntroduzca el nuevo teléfono: ");
+                    String nuevoTelefono = sc.next();
+
+                    agenda.editarContacto(agenda.buscarContactoTelefono(telefonoEditar),nombreNuevo,nuevoTelefono);
+                    break;
+
+                case 4:
                     agenda.mostrarAgendaOrdenada();
                     break;
 
@@ -55,7 +71,7 @@ public class Main {
 
     public static void menuInicio (){
         System.out.println("A continuación, seleccione la acción que desea realizar:");
-        System.out.println("\n1.AGREGAR CONTACTO\n2.BUSCAR UN CONTACTO MEDIANTE SU TELÉFONO\n3.MOSTRAR TODOS LOS CONTACTOS");
+        System.out.println("\n1.AGREGAR CONTACTO\n2.BUSCAR UN CONTACTO MEDIANTE SU TELÉFONO\n3.EDITAR UN CONTACTO A PARTIR DE SU NÚMERO\n4.MOSTRAR TODOS LOS CONTACTOS");
     }
     public static void agregarContacto(){
 
