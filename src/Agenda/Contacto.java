@@ -17,4 +17,14 @@ public class Contacto {
         return this.telefono;
     }
 
+    public String setNombre(String nombre){
+        this.nombre = nombre;
+        return this.nombre;
+    }
+
+    public String setTelefono (String telefono){
+        this.telefono = telefono;
+        return this.telefono;
+    }
+
 }

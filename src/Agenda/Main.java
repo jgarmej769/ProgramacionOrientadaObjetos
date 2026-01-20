@@ -36,7 +36,7 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Opción no habilitada");
+                    agenda.mostrarAgendaOrdenada();
                     break;
 
                 default:
