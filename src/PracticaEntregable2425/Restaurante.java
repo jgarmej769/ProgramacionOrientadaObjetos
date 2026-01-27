@@ -112,9 +112,29 @@ public class Restaurante {
 
     void mostrarStock (){
         System.out.println("====UNIDADES DISPONIBLES===");
+
         for (int i = 0; i < this.listaPlatos.length; i++) {
-            System.out.println("Plato: "this.listaPlatos[i].getNombre()+" Unidades Disponibles: "+this.listaPlatos[i].getStock());
+            System.out.println("Plato: "+this.listaPlatos[i].getNombre()+" Unidades disponibles: "+this.listaPlatos[i].getStock());
 
         }
+        System.out.println("===========================");
+    }
+
+    void mostarEmpleados (){
+        System.out.println("===EMPLEADOS DEL RESTAURANTE===");
+        System.out.println("===============================");
+        int contador = 1;
+        for (int i = 0; i < this.listaEmpleados.length; i++) {
+            if (this.listaEmpleados[i] != null){
+                System.out.println("**Empleado "+contador+"**");
+                System.out.println("    Nombre Completo: "+this.listaEmpleados[i].getNombreCompleto());
+                System.out.println("    Número de identificación: "+this.listaEmpleados[i].getNumIdentificativo());
+                System.out.println("    Teléfono: "+this.listaEmpleados[i].getTelefono());
+                System.out.println("    Fecha de contratación: "+this.listaEmpleados[i].getFechaContrato());
+                System.out.println("    Puesto de trabajo"+this.listaEmpleados[i].getTipo());
+                contador++;
+            }
+        }
+        System.out.println("===============================");
     }
 }

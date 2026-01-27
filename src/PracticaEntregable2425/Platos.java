@@ -37,4 +37,12 @@ public class Platos {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    void datosPlato(){
+        System.out.println("===DATOS DEL PLATO===");
+        System.out.println("    Nombre del plato: " +getNombre());
+        System.out.println("    Precio del plato: " +getPrecio());
+        System.out.println("    Tipo de plato: " +getCategoria());
+        System.out.println("    Stock disponible del plato: "+getStock());
+    }
 }
