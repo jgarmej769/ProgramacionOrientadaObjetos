@@ -8,13 +8,18 @@ public class Restaurante {
     private Empleado listaEmpleados[];
     private static String cadenaRestaurante;
 
+    public Restaurante(String nombre){
+        this.nombre = nombre;
+        this.listaPlatos = new Platos[0];
+        this.listaEmpleados = new Empleado[0];
+    }
+    //-------------GETTER Y SETTER -------------------------
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public static String getCadenaRestaurante() {
         return cadenaRestaurante;
     }
@@ -22,25 +27,13 @@ public class Restaurante {
         Restaurante.cadenaRestaurante = cadenaRestaurante;
     }
 
-    public Empleado[] getListaEmpleados() {
-        return listaEmpleados;
-    }
-    public void setListaEmpleados(Empleado[] listaEmpleados) {
-        this.listaEmpleados = listaEmpleados;
-    }
-
-    public Platos[] getListaPlatos() {
-        return listaPlatos;
-    }
-    public void setListaPlatos(Platos[] listaPlatos) {
-        this.listaPlatos = listaPlatos;
-    }
+    //------------MÉTODOS---------------------------
 
     private boolean buscarPlato (Platos busqueda){
         int i = 0;
         boolean encontrado = false;
         while ( i < this.listaPlatos.length && !encontrado){
-            if (this.listaPlatos[i].getNombre().equals(busqueda.getNombre())){
+            if (this.listaPlatos[i] != null && this.listaPlatos[i].getNombre().equals(busqueda.getNombre())){
             encontrado = true;
             }
             i++;
@@ -64,9 +57,8 @@ public class Restaurante {
 
     boolean insertarPlato (Platos nuevoPlato){
         boolean anadido = false;
-
         if (!buscarPlato(nuevoPlato)){
-            this.listaPlatos = Arrays.copyOf(this.listaPlatos, this.listaPlatos.length);
+            this.listaPlatos = Arrays.copyOf(this.listaPlatos, this.listaPlatos.length+1);
             this.listaPlatos[this.listaPlatos.length-1] = nuevoPlato;
             anadido = true;
         }else{
@@ -114,8 +106,7 @@ public class Restaurante {
         System.out.println("====UNIDADES DISPONIBLES===");
 
         for (int i = 0; i < this.listaPlatos.length; i++) {
-            System.out.println("Plato: "+this.listaPlatos[i].getNombre()+" Unidades disponibles: "+this.listaPlatos[i].getStock());
-
+            System.out.println(this.listaPlatos[i].getNombre()+" || Unidades disponibles: "+this.listaPlatos[i].getStock());
         }
         System.out.println("===========================");
     }
@@ -131,7 +122,7 @@ public class Restaurante {
                 System.out.println("    Número de identificación: "+this.listaEmpleados[i].getNumIdentificativo());
                 System.out.println("    Teléfono: "+this.listaEmpleados[i].getTelefono());
                 System.out.println("    Fecha de contratación: "+this.listaEmpleados[i].getFechaContrato());
-                System.out.println("    Puesto de trabajo"+this.listaEmpleados[i].getTipo());
+                System.out.println("    Puesto de trabajo: "+this.listaEmpleados[i].getTipoEmpleado());
                 contador++;
             }
         }

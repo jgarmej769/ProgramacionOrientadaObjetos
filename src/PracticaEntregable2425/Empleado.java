@@ -49,17 +49,17 @@ public class Empleado {
         return fechaContrato;
     }
 
-    public String getTipo() {
-        return tipo;
+    public TipoEmpleado getTipoEmpleado() {
+        return tipoEmpleado;
     }
 
     void datosEmpleado(){
-        System.out.println("===DATOS DEL EMPLEADO==="
+        System.out.println("===DATOS DEL EMPLEADO===");
         System.out.println("    Nombre Completo: "+ getNombreCompleto());
         System.out.println("    Número de identificación: "+ getNumIdentificativo());
         System.out.println("    Teléfono: "+ getTelefono());
         System.out.println("    Fecha de contratación: "+ getFechaContrato());
-        System.out.println("    Puesto de trabajo"+ getTipo());
+        System.out.println("    Puesto de trabajo: "+ getTipoEmpleado());
     }
 
     void cantidadEmpleados(){
