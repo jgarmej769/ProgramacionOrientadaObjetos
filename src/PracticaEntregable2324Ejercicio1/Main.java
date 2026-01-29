@@ -26,10 +26,7 @@ public class Main {
             System.out.println("Introduzca su altura: ");
             double altura = sc.nextDouble();
 
-            System.out.println("Introduzca su sexo (H/M): ");
-            String sexo = sc.next();;
-
-            Persona temporal = new Persona(nombre,edad,"",peso,altura,sexo);
+            Persona temporal = new Persona(nombre,edad,"",peso,altura);
 
             datosSalida[i] = temporal.calcularMC();
         }

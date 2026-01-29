@@ -6,13 +6,12 @@ public class Persona {
     private String dni;
     private double peso;
     private double altura;
-    private String genero;
+    private final String genero = "H";
 
     public Persona() {
         this.nombre = "";
         this.edad = 0;
         this.dni = "";
-        this.genero = "hombre";
         this.peso = 0;
         this.altura = 0;
     }
@@ -20,13 +19,12 @@ public class Persona {
         this();
         this.nombre = nombre;
     }
-    public Persona (String nombre, int edad, String dni, double peso, double altura, String genero){
+    public Persona (String nombre, int edad, String dni, double peso, double altura){
         this.nombre = nombre;
         this.edad = edad;
         this.dni = dni;
         this.peso = peso;
         this.altura = altura;
-        this.genero = genero;
     }
 
     int calcularMC(){

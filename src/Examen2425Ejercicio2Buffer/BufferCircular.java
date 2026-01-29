@@ -2,16 +2,16 @@ package Examen2425Ejercicio2Buffer;
 
 public class BufferCircular {
     Integer array[];
-    static int ultimaPosicion = 0;
-    static int posLectura = 0;
-    static int elementos = 0;
+    int ultimaPosicion = 0;
+    int posLectura = 0;
+    int elementos = 0;
 
     public BufferCircular(){
         this.array = new Integer[10];
     }
+
     boolean insertar(Integer num){
         boolean insertado = false;
-        int  i = 0;
        if (elementos != this.array.length){
            this.array[ultimaPosicion] = num;
            ultimaPosicion = (ultimaPosicion + 1) % this.array.length;
@@ -42,13 +42,13 @@ public class BufferCircular {
     }
 
     int estadoBuffer(){
-        int contadorNull = 0;
+        int contadorNoNull = 0;
         for (int i = 0; i < this.array.length; i++) {
-            if (this.array[i] == null){
-                contadorNull++;
+            if (this.array[i] != null){
+                contadorNoNull++;
             }
         }
-        int estado = (this.array.length - contadorNull) *10;
+        int estado = contadorNoNull *10;
         return estado;
     }
 }
