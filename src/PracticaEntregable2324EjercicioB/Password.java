@@ -40,7 +40,7 @@ public class Password {
                 minusculas++;
             }else if (comprobar >= 'A' && comprobar <= 'Z'){
                 mayusculas++;
-            }else if (comprobar >= 0 && comprobar <= 9){
+            }else if (Character.isDigit(comprobar)){
                 numeros++;
             }
         }

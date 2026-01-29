@@ -81,7 +81,4 @@ public class Persona {
         return genero;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 }

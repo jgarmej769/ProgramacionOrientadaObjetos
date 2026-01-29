@@ -1,5 +1,7 @@
 package PracticaEntregable2324EjercicioB;
 
+import Agenda.Contacto;
+
 import java.util.Scanner;
 
 public class MainPassword {
@@ -12,11 +14,24 @@ public class MainPassword {
         System.out.println("Introduzca la longitud de los Passwords: ");
         int longitud = sc.nextInt();
 
-        for (int i = 0; i < tam; i++) {
+        Password lista[] = new Password[tam];
+        for (int i = 0; i < lista.length; i++)  {
             System.out.println("Introduzca la contraseña "+(i+1)+": ");
             String contrasenia = sc.next();
 
             Password contaseniaTemporal = new Password(contrasenia);
+            lista[i] = contaseniaTemporal;
+        }
+
+        System.out.println("****RESULTADO DEL ANÁLISIS****");
+        for (int i = 0; i < lista.length; i++) {
+            System.out.print(lista[i].getContrasenia() +": ");
+            if (lista[i].esFuerte()){
+                System.out.print("Contraseña fuerte.");
+            }else{
+                System.out.print("Contraseña débil.");
+            }
+            System.out.println();
         }
 
     }

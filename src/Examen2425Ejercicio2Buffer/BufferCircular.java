@@ -2,12 +2,15 @@ package Examen2425Ejercicio2Buffer;
 
 public class BufferCircular {
     Integer array[];
-    int ultimaPosicion = 0;
-    int posLectura = 0;
-    int elementos = 0;
+    int ultimaPosicion;
+    int posLectura;
+    int elementos;
 
     public BufferCircular(){
         this.array = new Integer[10];
+        this.ultimaPosicion = 0;
+        this.posLectura = 0;
+        this.elementos = 0;
     }
 
     boolean insertar(Integer num){
