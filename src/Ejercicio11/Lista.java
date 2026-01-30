@@ -3,58 +3,147 @@ package Ejercicio11;
 import java.util.Arrays;
 
 public class Lista {
-    private Integer tabla[];
+  private Integer listaNumeros[];
 
-    public Lista (){
-        this.tabla = new Integer[0];
+  public Lista() {
+    this.listaNumeros = new Integer[0];
+  }
+
+  public Integer[] getListaNumeros() {
+    return listaNumeros;
+  }
+
+  public static Lista concatenar(Lista listaA, Lista listaB) {
+    Lista res = null;
+
+    if (listaA.getListaNumeros().length + listaB.getListaNumeros().length > 0) {
+      Integer numerosListaA[] = listaA.getListaNumeros();
+      Integer numerosListaB[] = listaB.getListaNumeros();
+      Integer listaNumerosTemp[] = Arrays.copyOf(numerosListaA, numerosListaA.length+numerosListaB.length);
+
+      for (int i = 0; i < numerosListaB.length; i++) {
+        listaNumerosTemp[numerosListaA.length+i] = numerosListaB[i];
+      }
+
+      res = new Lista();
+      res.listaNumeros = listaNumerosTemp;
     }
 
-    public int getNumeroElementos (){
-        return this.tabla.length;
+    return res;
+  }
+
+  public int getNumElementos() {
+    int numElementos = 0;
+    for (int i = 0; i < this.listaNumeros.length; i++) {
+      if (this.listaNumeros[i] != null) {
+        numElementos++;
+      }
     }
 
-    public void insertarAlPrincipio (Integer num){
-        Integer temporal [] = Arrays.copyOfRange(this.tabla,1,this.tabla.length + 1);
-        temporal [0] = num;
-        this.tabla = temporal;
+    return numElementos;
+  }
+
+  public void insertarFinal(Integer num) {
+    this.listaNumeros = Arrays.copyOf(this.listaNumeros, this.listaNumeros.length+1);
+    this.listaNumeros[this.listaNumeros.length-1] = num;
+  }
+
+  public void insertarPrincipio(Integer num) {
+    Integer listaNumerosTemp[] = new Integer[this.listaNumeros.length+1];
+    listaNumerosTemp[0] = num;
+
+    for (int i = 0; i < this.listaNumeros.length; i++) {
+      listaNumerosTemp[i+1] = this.listaNumeros[i];
     }
 
-    public void insertarAlFinal (Integer num){
-        Integer temporal [] = Arrays.copyOf(this.tabla, this.tabla.length+1);
-        temporal[this.tabla.length] = num;
-        this.tabla = temporal;
-    }
+    this.listaNumeros = listaNumerosTemp;
+  }
 
-    public void insertarEnPosicion (Integer num, int posicion){
-        int contador = 0;
+  public boolean insertarEnIndice(Integer num, int index) {
+    boolean res = false;
 
-        Integer temporal[] = new Integer[this.tabla.length];
-        for (int i = 0; i < temporal.length; i++) {
-            if (i == posicion){
-                temporal[i] = num;
-            }else{
-                temporal[i] = this.tabla[contador];
-                contador++;
-            }
+    if (index <= this.listaNumeros.length) {
+      Integer listaNumerosTemp[] = new Integer[this.listaNumeros.length+1];
+      listaNumerosTemp[index] = num;
+
+      int iOriginal = 0;
+      for (int i = 0; i < listaNumerosTemp.length; i++) {
+        if (listaNumerosTemp[i] == null) {
+          listaNumerosTemp[i] = this.listaNumeros[iOriginal++];
         }
+      }
 
-        this.tabla = temporal;
+      this.listaNumeros = listaNumerosTemp;
+      res = true;
     }
 
-    public void concatenarListas (Integer tabla2[]){
-        int tam = this.tabla.length + tabla2.length;
-        Integer tablaCompleta[] = Arrays.copyOfRange(this.tabla,0, tam);
+    return res;
+  }
 
-        int contador = 0;
-        for (int i = this.tabla.length ; i < tablaCompleta.length; i++) {
-            tablaCompleta[i] = tabla2[contador];
-            contador++;
+  public void insertarDesdeOtraLista(Lista lista) {
+    Lista listaTemp = Lista.concatenar(this, lista);
+
+    this.listaNumeros = listaTemp.listaNumeros;
+  }
+
+  public boolean eliminarElemento(int index) {
+    boolean res = false;
+
+    if (index < this.listaNumeros.length) {
+      Integer listaNumerosTemp[] = new Integer[this.listaNumeros.length-1];
+      this.listaNumeros[index] = null;
+
+      int iGuardado = 0;
+      for (int i = 0; i < this.listaNumeros.length; i++) {
+        if (this.listaNumeros[i] != null) {
+          listaNumerosTemp[iGuardado++] = this.listaNumeros[i];
         }
-        this.tabla = tablaCompleta;
+      }
+
+      this.listaNumeros = listaNumerosTemp;
+      res = true;
     }
 
-    public void eliminarElementoPosicion (int posicion){
+    return res;
+  }
 
+  public Integer obtenerElemento(int index) {
+    Integer res = null;
+
+    if (index < this.listaNumeros.length) {
+      res = this.listaNumeros[index];
     }
 
+    return res;
+  }
+
+  public int buscarElemento(Integer num) {
+    int res = -1;
+
+    for (int i = 0; i < this.listaNumeros.length && res == -1; i++) {
+      if (this.listaNumeros[i].equals(num)) {
+        res = i;
+      }
+    }
+
+    return res;
+  }
+
+  public void mostrarLista() {
+    System.out.println("\n=== Elementos de la lista ===");
+    System.out.print("|");
+    if (this.getNumElementos() > 0) {
+      for (int i = 0; i < this.listaNumeros.length; i++) {
+        if (this.listaNumeros[i] != null) {
+          System.out.print(" "+this.listaNumeros[i]+" ");
+        } else {
+          System.out.print(" X ");
+        }
+        System.out.print("|");
+      }
+      System.out.println();
+    } else {
+      System.out.println("- La lista esta vacía.");
+    }
+  }
 }

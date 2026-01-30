@@ -1,38 +1,37 @@
 package Ejercicio1;
 
-import java.util.Scanner;
-
 public class CuentaCorriente {
-    String dni;
-    String nombreTitular;
-    double saldo;
+  private String dni;
+  private String nombreTitular;
+  private double saldo;
 
-    public CuentaCorriente (String dni, String nombreTitular){
-        this.dni = dni;
-        this.nombreTitular = nombreTitular;
-        this.saldo = 0;
-    }
-    double sacarDinero (double saldoRetirar){
-        if (saldoRetirar > this.saldo){
-            System.out.println("La operación no se ha podido llevar a cabo debido a que no tiene saldo suficiente");
-        }else{
-            this.saldo = this.saldo - saldoRetirar;
-            System.out.println("Ha retirado "+saldoRetirar+"€, sau saldo acutal es de "+this.saldo+"€.");
-        }
-        return this.saldo;
-    }
+  public CuentaCorriente(String dni, String nombreTitular) {
+    this.dni = dni;
+    this.nombreTitular = nombreTitular;
+    this.saldo = 0;
+  }
 
-    double ingresarDinero (double saldoIngresar){
-
-        this.saldo += saldoIngresar;
-        System.out.println("Ha ingresado "+saldoIngresar+"€, su saldo acutal es de "+this.saldo+"€.");
-        return this.saldo;
+  public void sacarDinero(double importe) {
+    if (importe <= this.saldo) {
+      System.out.println("==== OPERACIÓN REALIZADA ====");
+      System.out.println(" - Se ha sacado: "+importe+"€");
+    } else {
+      System.out.println("==== OPERACIÓN DENEGADA ====");
+      System.out.println(" - No hay saldo suficiente.");
     }
+    System.out.println();
+  }
 
-    void mostrarInformacion(){
-        System.out.println("\n\n=====DATOS DE LA CUENTA CORRIENTE ====");
-        System.out.println("Titular de la Cuenta: "+nombreTitular);
-        System.out.println("DNI del titular: "+dni);
-        System.out.println("Saldo Actual: "+saldo+"€");
-    }
+  public void ingresarDinero(double importe) {
+    this.saldo += importe;
+  }
+
+  public void mostrarInformacion() {
+    System.out.println("==== INFORMACIÓN DE LA CUENTA CORRIENTE ====");
+    System.out.println(" - DNI: "+dni);
+    System.out.println(" - Nombre del Titular: "+nombreTitular);
+    System.out.println(" - Saldo disponible: "+saldo+"€");
+    System.out.println();
+  }
 }
+

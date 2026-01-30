@@ -1,9 +1,9 @@
-package Ejercicio2;
+package ejercicio3;
 
 public class Main {
   public static void main(String[] args) {
     CuentaCorriente cuenta1 = new CuentaCorriente("12345678A", "José David");
-    CuentaCorriente cuenta2 = new CuentaCorriente("12345678A", "Mario", 123.12);
+    CuentaCorriente cuenta2 = new CuentaCorriente("12345678A", "José David", 123.12);
     CuentaCorriente cuenta3 = new CuentaCorriente("12345678A", 32.21);
 
     // Cuenta 1

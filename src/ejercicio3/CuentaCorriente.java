@@ -1,9 +1,10 @@
-package Ejercicio2;
+package ejercicio3;
 
 public class CuentaCorriente {
-  private String dni;
-  private String nombreTitular;
+  String dni;
+  public String nombreTitular;
   private double saldo;
+  private static String nombreBanco;
 
   public CuentaCorriente(String dni, String nombreTitular, double saldo) {
     this.dni = dni;
@@ -41,5 +42,12 @@ public class CuentaCorriente {
     System.out.println(" - Saldo disponible: "+saldo+"€");
     System.out.println();
   }
-}
 
+  public static String getNombreBanco() {
+    return nombreBanco;
+  }
+
+  public static void setNombreBanco(String nombreBanco) {
+    CuentaCorriente.nombreBanco = nombreBanco;
+  }
+}
