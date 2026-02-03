@@ -1,6 +1,5 @@
 package ProyectoBiblioteca;
 
-public class Libro {
     public class Libro {
         private String autor;
         private String titulo;
@@ -45,4 +44,3 @@ public class Libro {
 
     }
 
-}
